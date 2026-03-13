@@ -17,17 +17,9 @@ public class GUIMagazzino extends javax.swing.JFrame {
      */
     public GUIMagazzino() {
         initComponents();
+        // posiziona al centro
+        this.setLocationRelativeTo(this);
         
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
     }
 
     /**
@@ -69,6 +61,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Magazzino");
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
@@ -80,15 +73,15 @@ public class GUIMagazzino extends javax.swing.JFrame {
         jPanel2.setLayout(new java.awt.GridLayout());
 
         BtnCompra.setText("Compra");
-        BtnCompra.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        BtnCompra.setBorder(null);
         jPanel2.add(BtnCompra);
 
         btnVendi.setText("Vendi");
-        btnVendi.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        btnVendi.setBorder(null);
         jPanel2.add(btnVendi);
 
         btnCerca.setText("🔍Cerca");
-        btnCerca.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        btnCerca.setBorder(null);
         jPanel2.add(btnCerca);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
