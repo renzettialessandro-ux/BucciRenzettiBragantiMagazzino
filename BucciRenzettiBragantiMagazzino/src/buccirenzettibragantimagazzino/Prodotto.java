@@ -34,6 +34,68 @@ public class Prodotto {
         this.proPrezzoAcq = proPrezzoAcq;
         this.proPrezzovendite = proPrezzovendite;
         this.proScorta = proScorta;
+        proScortaMin=5;
+    }
+
+    public String getProId() {
+        return proId;
+    }
+
+    public void setProId(String proId) {
+        this.proId = proId;
+    }
+
+    public String getProNome() {
+        return proNome;
+    }
+
+    public void setProNome(String proNome) {
+        this.proNome = proNome;
+    }
+
+    public double getProPrezzoAcq() {
+        return proPrezzoAcq;
+    }
+
+    public void setProPrezzoAcq(double proPrezzoAcq) {
+        this.proPrezzoAcq = proPrezzoAcq;
+    }
+
+    public double getProPrezzovendite() {
+        return proPrezzovendite;
+    }
+
+    public void setProPrezzovendite(double proPrezzovendite) {
+        this.proPrezzovendite = proPrezzovendite;
+    }
+
+    public int getProScorta() {
+        return proScorta;
+    }
+
+    public void setProScorta(int proScorta) {
+        this.proScorta = proScorta;
+    }
+
+    public int getProScortaMin() {
+        return proScortaMin;
+    }
+
+    public void setProScortaMin(int proScortaMin) {
+        this.proScortaMin = proScortaMin;
+    }
+
+    public int getProVenduti() {
+        return proVenduti;
+    }
+
+    public void setProVenduti(int proVenduti) {
+        this.proVenduti = proVenduti;
+    }
+
+    @Override
+    public String toString() {
+        return "Prodotto{" + "proId=" + proId + ", proNome=" + proNome + ", proPrezzoAcq=" + proPrezzoAcq + ", proPrezzovendite=" + proPrezzovendite + ", proScorta=" + proScorta + ", proScortaMin=" + proScortaMin + ", proVenduti=" + proVenduti + '}';
     }
    
    

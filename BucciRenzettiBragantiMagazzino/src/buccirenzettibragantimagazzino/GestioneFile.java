@@ -43,15 +43,18 @@ public class GestioneFile {
         }
     }
     
-    public void aggiungiStudenteFile(Prodotto p) {
+    public void aggiungiProdottoFile(Prodotto p) {
         try {
-            RandomAccessFile file = new RandomAccessFile("studenti.gay", "rw");
+            RandomAccessFile file = new RandomAccessFile("magazzino.fgm", "rw");
             int nRecord = (int) (file.length() / dimRecordProdotto);
             file.seek(nRecord * dimRecordProdotto);
-            file.writeChars(aggiustaLunghezzaStringa(p.getNome()));   
-            file.writeChars(aggiustaLunghezzaStringa(s.getCognome())); 
-            file.writeChars(s.getId());                               
-            file.writeChars(aggiustaLunghezzaStringa(s.getClasse()));
+            file.writeChars(aggiustaLunghezzaStringa(p.getProId())); 
+            file.writeChars(aggiustaLunghezzaStringa(p.getProNome()));   
+            file.writeDouble(p.getProPrezzoAcq()); 
+            file.writeDouble(p.getProPrezzovendite());
+            file.writeInt(p.getProScorta());
+            file.writeInt(p.getProScortaMin());
+            file.writeInt(p.getProVenduti());
             file.close();                                            
         } catch (FileNotFoundException ex) {
             System.out.println("File non trovato");
