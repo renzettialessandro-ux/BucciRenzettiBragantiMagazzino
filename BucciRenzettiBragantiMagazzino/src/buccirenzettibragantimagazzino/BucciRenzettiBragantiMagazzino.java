@@ -14,7 +14,8 @@ public class BucciRenzettiBragantiMagazzino {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        GUIMagazzino f = new GUIMagazzino();
+        f.setVisible(true);
     }
     
 }

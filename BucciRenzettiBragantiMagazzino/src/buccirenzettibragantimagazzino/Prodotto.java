@@ -9,6 +9,9 @@ package buccirenzettibragantimagazzino;
  * @author renzetti.alessandro
  */
 public class Prodotto {
+    /**
+     * attributi
+     */
    private String proId;
    private String proNome;
    private double proPrezzoAcq;
@@ -16,5 +19,22 @@ public class Prodotto {
    private int proScorta;
    private int proScortaMin;
    private int proVenduti;
+
+   /**
+    * costruttore di prodotto
+    * @param proId id del prodotto
+    * @param proNome nome del prodotto
+    * @param proPrezzoAcq prezzo dell'acquirente
+    * @param proPrezzovendite prezzo di vendita
+    * @param proScorta numero prodotti da acquistare
+    */
+    public Prodotto(String proId, String proNome, double proPrezzoAcq, double proPrezzovendite, int proScorta) {
+        this.proId = proId;
+        this.proNome = proNome;
+        this.proPrezzoAcq = proPrezzoAcq;
+        this.proPrezzovendite = proPrezzovendite;
+        this.proScorta = proScorta;
+    }
+   
    
 }

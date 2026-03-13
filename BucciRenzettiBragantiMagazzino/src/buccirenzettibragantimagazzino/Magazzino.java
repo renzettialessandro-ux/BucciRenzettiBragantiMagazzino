@@ -14,4 +14,5 @@ public class Magazzino {
      */
     private ArrayList<Prodotto> listaProdotti;
     
+    
 }
