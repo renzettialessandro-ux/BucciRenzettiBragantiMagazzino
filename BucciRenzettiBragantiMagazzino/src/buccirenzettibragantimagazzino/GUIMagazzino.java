@@ -70,7 +70,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(10, 10, 10, 10, new java.awt.Color(153, 153, 255)));
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         BtnCompra.setText("Compra");
         BtnCompra.setBorder(null);
