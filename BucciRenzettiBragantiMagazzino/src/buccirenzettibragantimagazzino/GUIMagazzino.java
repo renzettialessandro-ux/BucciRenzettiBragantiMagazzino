@@ -65,7 +65,6 @@ public class GUIMagazzino extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
-        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -75,6 +74,11 @@ public class GUIMagazzino extends javax.swing.JFrame {
 
         BtnCompra.setText("Compra");
         BtnCompra.setBorder(null);
+        BtnCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCompraActionPerformed(evt);
+            }
+        });
         jPanel2.add(BtnCompra);
 
         btnVendi.setText("Vendi");
@@ -127,6 +131,14 @@ public class GUIMagazzino extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCompraActionPerformed
+        GUICompra f = new GUICompra();
+        f.setTitle("Compra Prodotto");
+        f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        f.setVisible(true);
+        f.setLocationRelativeTo(this);
+    }//GEN-LAST:event_BtnCompraActionPerformed
 
     /**
      * @param args the command line arguments
