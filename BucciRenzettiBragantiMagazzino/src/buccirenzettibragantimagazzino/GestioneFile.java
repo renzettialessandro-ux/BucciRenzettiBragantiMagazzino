@@ -62,4 +62,48 @@ public class GestioneFile {
             System.out.println("Problema in lettura-scrittura file");
         }
     }
+    public String cercaProdottoFile(Prodotto p, String idCercato) {
+        try {
+            RandomAccessFile file = new RandomAccessFile("magazzino.fgm", "r");
+            int nRecord = (int) (file.length() / dimRecordProdotto);
+
+            for (int i = 0; i < nRecord; i++) {
+                file.seek(i * dimRecordProdotto);
+                file.writeChars(aggiustaLunghezzaStringa(p.getProId()));
+                file.writeChars(aggiustaLunghezzaStringa(p.getProNome()));
+                file.writeDouble(p.getProPrezzoAcq());
+                file.writeDouble(p.getProPrezzovendite());
+                file.writeInt(p.getProScorta());
+                file.writeInt(p.getProScortaMin());
+                file.writeInt(p.getProVenduti());
+                if (p.getProId().equals(idCercato)) {
+                    file.close();
+                    return p.toString();
+                }
+            }
+            file.close();
+        } catch (IOException e) {
+            System.out.println("Errore lettura studente: " + e.getMessage());
+        }
+        return null;
+    }
+
+    public void eliminaProdottoFile(Prodotto p) {
+        try {
+            RandomAccessFile file = new RandomAccessFile("magazzino.fgm", "r");
+            if (checkStato(p.getStato()) == 0) {
+                int nRecord = (int) (file.length() / dimRecordProdotto);
+                for (int i = 0; i < nRecord; i++) {
+                    file.seek(i * dimRecordProdotto);
+                    
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Errore lettura studente: " + e.getMessage());
+        }
+    }
+
+    public int checkStato(int stato) {
+        
+    }
 }

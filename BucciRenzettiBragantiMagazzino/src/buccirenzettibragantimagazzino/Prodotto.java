@@ -19,6 +19,7 @@ public class Prodotto {
    private int proScorta;
    private int proScortaMin;
    private int proVenduti;
+   private int stato;
 
    /**
     * costruttore di prodotto
@@ -35,6 +36,15 @@ public class Prodotto {
         this.proPrezzovendite = proPrezzovendite;
         this.proScorta = proScorta;
         proScortaMin=5;
+        stato=1;
+    }
+
+    public int getStato() {
+        return stato;
+    }
+
+    public void setStato(int stato) {
+        this.stato = stato;
     }
 
     public String getProId() {
