@@ -36,7 +36,7 @@ public class GestioneFile {
     public void aggiungiCombinazione(String proId, int posizione) {
         try {
             java.io.FileWriter fw = new java.io.FileWriter("key.txt", true);
-            fw.write(proId + ";" + posizione + "\n");
+            fw.write(proId + ";" + posizione + ";" + 1 + "\n"); // 1 = attivo di default
             fw.close();
         } catch (IOException e) {
             System.out.println("Errore scrittura combinazioni");
@@ -55,38 +55,61 @@ public class GestioneFile {
             file.writeInt(p.getProScorta());
             file.writeInt(p.getProScortaMin());
             file.writeInt(p.getProVenduti());
-            aggiungiCombinazione(p.getProId(),nRecord * dimRecordProdotto);
+            aggiungiCombinazione(p.getProId(), nRecord);
             file.close();
         } catch (FileNotFoundException ex) {
             System.out.println("File non trovato");
         } catch (IOException e) {
             System.out.println("Problema in lettura-scrittura file");
         }
-        
+
     }
 
-    public String cercaProdottoFile(Prodotto p, String idCercato) {
+    public String cercaProdottoFile(String idCercato) {
         try {
-            RandomAccessFile file = new RandomAccessFile("magazzino.fgm", "r");
-            int nRecord = (int) (file.length() / dimRecordProdotto);
+            // 1) Cerca nel file sequenziale
+            java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader("key.txt"));
+            String riga;
+            int posizione = -1;
 
-            for (int i = 0; i < nRecord; i++) {
-                file.seek(i * dimRecordProdotto);
-                file.writeChars(aggiustaLunghezzaStringa(p.getProId()));
-                file.writeChars(aggiustaLunghezzaStringa(p.getProNome()));
-                file.writeDouble(p.getProPrezzoAcq());
-                file.writeDouble(p.getProPrezzovendite());
-                file.writeInt(p.getProScorta());
-                file.writeInt(p.getProScortaMin());
-                file.writeInt(p.getProVenduti());
-                if (p.getProId().equals(idCercato)) {
-                    file.close();
-                    return p.toString();
+            while ((riga = br.readLine()) != null) {
+                int primoPunto = riga.indexOf(";");
+                int secondoPunto = riga.indexOf(";", primoPunto + 1);
+
+                String id = riga.substring(0, primoPunto);
+                String stato = riga.substring(secondoPunto + 1);
+
+                if (id.equals(idCercato) && stato.equals("1")) { // trovato e attivo
+                    posizione = Integer.parseInt(riga.substring(primoPunto + 1, secondoPunto));
+                    break;
                 }
             }
+            br.close();
+
+            if (posizione == -1) {
+                return null; // non trovato o eliminato
+            }
+
+            // 2) Vai direttamente alla posizione nel file binario
+            RandomAccessFile file = new RandomAccessFile("magazzino.fgm", "r");
+            file.seek(posizione * dimRecordProdotto);
+
+            String id = leggiChars(file, 20).replace("*", "").trim();
+            String nome = leggiChars(file, 20).replace("*", "").trim();
+            double prezzoAcq = file.readDouble();
+            double prezzoVen = file.readDouble();
+            int scorta = file.readInt();
+            int scortaMin = file.readInt();
+            int venduti = file.readInt();
             file.close();
+
+            return "ID: " + id + ", Nome: " + nome
+                    + ", PrezzoAcq: " + prezzoAcq + ", PrezzoVen: " + prezzoVen
+                    + ", Scorta: " + scorta + ", ScortaMin: " + scortaMin
+                    + ", Venduti: " + venduti;
+
         } catch (IOException e) {
-            System.out.println("Errore lettura studente: " + e.getMessage());
+            System.out.println("Errore lettura prodotto: " + e.getMessage());
         }
         return null;
     }

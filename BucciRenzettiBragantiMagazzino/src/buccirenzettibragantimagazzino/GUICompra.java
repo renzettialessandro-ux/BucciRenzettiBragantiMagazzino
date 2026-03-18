@@ -147,6 +147,7 @@ public class GUICompra extends javax.swing.JFrame {
     private void BtnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCompraActionPerformed
         // TODO add your handling code here:
         aggiungiProdotto();
+        
     }//GEN-LAST:event_BtnCompraActionPerformed
 
     /**

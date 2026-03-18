@@ -30,8 +30,8 @@ public class GUICerca extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtId = new javax.swing.JTextField();
+        btnCerca = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(284, 140));
@@ -47,18 +47,27 @@ public class GUICerca extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        getContentPane().add(jTextField1, gridBagConstraints);
+        getContentPane().add(txtId, gridBagConstraints);
 
-        jButton1.setText("Cerca");
+        btnCerca.setText("Cerca");
+        btnCerca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCercaActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 6;
         gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
-        getContentPane().add(jButton1, gridBagConstraints);
+        getContentPane().add(btnCerca, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCercaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCercaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -86,8 +95,20 @@ public class GUICerca extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCerca;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
+    Magazzino m = new Magazzino();
+    GestioneFile gf = new GestioneFile();
+    
+    public String cerca() {
+    String idCercato = txtId.getText();
+    return gf.cercaProdottoFile(idCercato);
 }
+
+
+
+}
+
+
