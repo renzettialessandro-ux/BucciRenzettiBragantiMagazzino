@@ -9,7 +9,7 @@ package buccirenzettibragantimagazzino;
  * @author bucci.alex
  */
 public class GUICerca extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUICerca.class.getName());
 
     /**
@@ -66,7 +66,7 @@ public class GUICerca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCercaActionPerformed
-        // TODO add your handling code here:
+        cerca();
     }//GEN-LAST:event_btnCercaActionPerformed
 
     /**
@@ -101,14 +101,9 @@ public class GUICerca extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     Magazzino m = new Magazzino();
     GestioneFile gf = new GestioneFile();
-    
+
     public String cerca() {
-    String idCercato = txtId.getText();
-    return gf.cercaProdottoFile(idCercato);
+        String idCercato = txtId.getText();
+        return gf.cercaProdottoFile(idCercato);
+    }
 }
-
-
-
-}
-
-

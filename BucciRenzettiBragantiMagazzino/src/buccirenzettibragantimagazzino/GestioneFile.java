@@ -7,6 +7,7 @@ package buccirenzettibragantimagazzino;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 
 /**
  *
@@ -116,36 +117,67 @@ public class GestioneFile {
         return null;
     }
 
-    public void eliminaProdottoFile(Prodotto p) {
-        try {
-            RandomAccessFile file = new RandomAccessFile("magazzino.fgm", "rw");
-            int nRecord = (int) (file.length() / dimRecordProdotto);
+   public void eliminaProdottoFile(String idCercato) {
+    try {
+        java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader("key.txt"));
+        String riga;
+        int posizione = -1;
 
-            for (int i = 0; i < nRecord; i++) {
-                file.seek(i * dimRecordProdotto);
-                String idLetto = leggiChars(file, 20).replace("*", "").trim();
+        while ((riga = br.readLine()) != null) {
+            int primoPunto = riga.indexOf(";");
+            int secondoPunto = riga.indexOf(";", primoPunto + 1);
 
-                if (idLetto.equals(p.getProId())) {
-                    // 1) Azzera il record nel file binario
-                    file.seek(i * dimRecordProdotto);
-                    file.writeChars("********************"); // proId
-                    file.writeChars("********************"); // proNome
-                    file.writeDouble(0.0);
-                    file.writeDouble(0.0);
-                    file.writeInt(0);
-                    file.writeInt(0);
-                    file.writeInt(0);
+            String id = riga.substring(0, primoPunto);
+            String stato = riga.substring(secondoPunto + 1);
 
-                    // 2) Aggiorna lo stato nel file sequenziale
-                    aggiornaStatoFile(p.getProId(), 0);
-                    break;
-                }
+            if (id.equals(idCercato) && stato.equals("1")) {
+                posizione = Integer.parseInt(riga.substring(primoPunto + 1, secondoPunto));
+                break;
             }
-            file.close();
-        } catch (IOException e) {
-            System.out.println("Errore eliminazione: " + e.getMessage());
         }
+        br.close();
+
+        if (posizione == -1) {
+            System.out.println("Prodotto non trovato o già eliminato");
+            return;
+        }
+
+        RandomAccessFile file = new RandomAccessFile("magazzino.fgm", "rw");
+        file.seek(posizione * dimRecordProdotto);
+        file.writeChars("********************");
+        file.writeChars("********************");
+        file.writeDouble(0.0);
+        file.writeDouble(0.0);
+        file.writeInt(0);
+        file.writeInt(0);
+        file.writeInt(0);
+        file.close();
+
+        aggiornaStatoFile(idCercato, 0);
+
+    } catch (IOException e) {
+        System.out.println("Errore eliminazione: " + e.getMessage());
+   
+
+        // 2) Vai direttamente alla posizione e azzera il record
+        RandomAccessFile file = new RandomAccessFile("magazzino.fgm", "rw");
+        file.seek(posizione * dimRecordProdotto);
+        file.writeChars("********************"); // proId
+        file.writeChars("********************"); // proNome
+        file.writeDouble(0.0);
+        file.writeDouble(0.0);
+        file.writeInt(0);
+        file.writeInt(0);
+        file.writeInt(0);
+        file.close();
+
+        // 3) Aggiorna lo stato nel file sequenziale
+        aggiornaStatoFile(p.getProId(), 0);
+
+    } catch (IOException e) {
+        System.out.println("Errore eliminazione: " + e.getMessage());
     }
+}
 
     private void aggiornaStatoFile(String idCercato, int nuovoStato) {
         try {
@@ -186,4 +218,5 @@ public class GestioneFile {
         }
         return sb.toString();
     }
+ 
 }

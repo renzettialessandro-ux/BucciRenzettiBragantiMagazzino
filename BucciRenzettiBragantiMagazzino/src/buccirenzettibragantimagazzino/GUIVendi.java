@@ -33,9 +33,9 @@ public class GUIVendi extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtScorteVendere = new javax.swing.JTextField();
         btnVendi = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
@@ -64,7 +64,7 @@ public class GUIVendi extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 0, 0, 3);
-        getContentPane().add(jTextField3, gridBagConstraints);
+        getContentPane().add(txtId, gridBagConstraints);
 
         jLabel4.setText("Numero");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -78,7 +78,7 @@ public class GUIVendi extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 0, 0, 3);
-        getContentPane().add(jTextField4, gridBagConstraints);
+        getContentPane().add(txtScorteVendere, gridBagConstraints);
 
         btnVendi.setText("Vendi");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -123,7 +123,25 @@ public class GUIVendi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtScorteVendere;
     // End of variables declaration//GEN-END:variables
+GestioneFile gf= new GestioneFile();
+public void vendi() {
+    String idCercato = txtId.getText();
+    int numero = Integer.parseInt(txtScorteVendere.getText());
+
+    // 1) Cerca il prodotto nel file
+    String risultato = gf.cercaProdottoFile(idCercato);
+
+    if (risultato == null) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Prodotto non trovato o già eliminato!");
+        return;
+    }
+
+    // 2) Elimina usando lo stesso idCercato
+    gf.eliminaProdottoFile(idCercato);
+
+    javax.swing.JOptionPane.showMessageDialog(this, "Prodotto venduto!\n" + risultato);
+}
 }
