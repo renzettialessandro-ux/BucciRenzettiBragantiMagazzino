@@ -4,6 +4,8 @@
  */
 package buccirenzettibragantimagazzino;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bucci.alex
@@ -145,34 +147,13 @@ public class GUICompra extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCompraActionPerformed
-        // TODO add your handling code here:
-        aggiungiProdotto();
+        if (aggiungiProdotto()) {
+            this.dispose();
+        }
+
+
     }//GEN-LAST:event_BtnCompraActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new GUICompra().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCompra;
@@ -196,14 +177,23 @@ public class GUICompra extends javax.swing.JFrame {
     Magazzino m = new Magazzino();
     GestioneFile gf = new GestioneFile();
 
-    private void aggiungiProdotto() {
-        String id = txtId.getText();
-        String nome = txtNome.getText();
-        double prezzoAcquista = Double.parseDouble(txtPrezzoAcquista.getText());
-        int nProdotti = Integer.parseInt(txtNumero.getText());
-        Prodotto p = new Prodotto(id, nome, prezzoAcquista, nProdotti);
-        m.aggiungiProdotto(p, p.getProScorta());
-        gf.aggiungiProdottoFile(p);
+    private boolean aggiungiProdotto() {
+        try {
+            String id = txtId.getText();
+            String nome = txtNome.getText();
+            double prezzoAcquista = Double.parseDouble(txtPrezzoAcquista.getText());
+            int nProdotti = Integer.parseInt(txtNumero.getText());
+            Prodotto p = new Prodotto(id, nome, prezzoAcquista, nProdotti);
+            m.aggiungiProdotto(p, p.getProScorta());
+            gf.aggiungiProdottoFile(p);
+            return true;
+        } catch (java.lang.NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Inserire valori validi", "Errore", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
     }
+    
+    
 
 }
