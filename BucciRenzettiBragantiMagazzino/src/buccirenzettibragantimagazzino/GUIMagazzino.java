@@ -159,7 +159,11 @@ public class GUIMagazzino extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVendiActionPerformed
 
     private void btnCercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCercaActionPerformed
-        // TODO add your handling code here:
+        GUICerca f = new GUICerca();
+        f.setTitle("Cerca Prodotto");
+        f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        f.setVisible(true);
+        f.setLocationRelativeTo(this);
     }//GEN-LAST:event_btnCercaActionPerformed
 
     /**
