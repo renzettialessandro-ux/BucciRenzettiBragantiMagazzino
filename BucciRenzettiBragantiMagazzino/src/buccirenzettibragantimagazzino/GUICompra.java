@@ -42,7 +42,7 @@ public class GUICompra extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtPrezzoVendita = new javax.swing.JTextField();
+        txtPrezzoAcquista = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtNumero = new javax.swing.JTextField();
         BtnCompra = new javax.swing.JButton();
@@ -113,7 +113,7 @@ public class GUICompra extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.2;
         gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 3);
-        getContentPane().add(txtPrezzoVendita, gridBagConstraints);
+        getContentPane().add(txtPrezzoAcquista, gridBagConstraints);
 
         jLabel8.setText("Numero da acquistare");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -130,6 +130,11 @@ public class GUICompra extends javax.swing.JFrame {
         getContentPane().add(txtNumero, gridBagConstraints);
 
         BtnCompra.setText("Compra");
+        BtnCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCompraActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
@@ -138,6 +143,10 @@ public class GUICompra extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,6 +190,19 @@ public class GUICompra extends javax.swing.JFrame {
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
-    private javax.swing.JTextField txtPrezzoVendita;
+    private javax.swing.JTextField txtPrezzoAcquista;
     // End of variables declaration//GEN-END:variables
+    Magazzino m=new Magazzino();
+    GestioneFile gf=new GestioneFile();
+    
+    private void aggiungiProdotto(){
+    String id=txtId.getText();
+    String nome=txtNome.getText();
+    double prezzoAcquista = Double.parseDouble(txtPrezzoAcquista.getText());
+    int nProdotti = Integer.parseInt(txtNumero.getText());
+    Prodotto p=new Prodotto(id,nome,prezzoAcquista,nProdotti);
+    m.aggiungiProdotto(p, p.getProScorta());
+    gf.aggiungiProdottoFile(p);
+}
+
 }

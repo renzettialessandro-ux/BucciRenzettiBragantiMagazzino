@@ -31,11 +31,11 @@ public class Prodotto {
      * @param proPrezzovendite prezzo di vendita
      * @param proScorta numero prodotti da acquistare
      */
-    public Prodotto(String proId, String proNome, double proPrezzoAcq, double proPrezzovendite, int proScorta) {
+    public Prodotto(String proId, String proNome, double proPrezzoAcq, int proScorta) {
         this.proId = proId;
         this.proNome = proNome;
         this.proPrezzoAcq = proPrezzoAcq;
-        this.proPrezzovendite = proPrezzovendite;
+        this.proPrezzovendite = proPrezzoAcq*1.23;
         this.proScorta = proScorta;
         proScortaMin = 5;
         stato = 1;

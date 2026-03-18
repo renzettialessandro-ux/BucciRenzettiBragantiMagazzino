@@ -55,12 +55,14 @@ public class GestioneFile {
             file.writeInt(p.getProScorta());
             file.writeInt(p.getProScortaMin());
             file.writeInt(p.getProVenduti());
+            aggiungiCombinazione(p.getProId(),nRecord * dimRecordProdotto);
             file.close();
         } catch (FileNotFoundException ex) {
             System.out.println("File non trovato");
         } catch (IOException e) {
             System.out.println("Problema in lettura-scrittura file");
         }
+        
     }
 
     public String cercaProdottoFile(Prodotto p, String idCercato) {

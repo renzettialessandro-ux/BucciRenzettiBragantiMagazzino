@@ -144,7 +144,6 @@ public class GUIMagazzino extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCompra;
     private javax.swing.JButton btnCerca;
@@ -158,4 +157,6 @@ public class GUIMagazzino extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
+
+
 }
