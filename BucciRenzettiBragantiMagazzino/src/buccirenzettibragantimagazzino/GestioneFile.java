@@ -218,5 +218,39 @@ public class GestioneFile {
         }
         return sb.toString();
     }
- 
+
+    
+    public ArrayList<Prodotto> leggiTuttiProdotti() {
+    ArrayList<Prodotto> lista = new ArrayList<>();
+    try {
+        RandomAccessFile file = new RandomAccessFile("magazzino.fgm", "r");
+        int nRecord = (int) (file.length() / dimRecordProdotto);
+
+        for (int i = 0; i < nRecord; i++) {
+            file.seek(i * dimRecordProdotto);
+
+            String pId    = leggiChars(file, 20).replace("*", "").trim();
+            String pNome  = leggiChars(file, 20).replace("*", "").trim();
+            double pAcq   = file.readDouble();
+            double pVen   = file.readDouble();
+            int scorta    = file.readInt();
+            int scortaMin = file.readInt();
+            int venduti   = file.readInt();
+
+            // salta i record eliminati (id vuoto)
+            if (!pId.isEmpty()) {
+                Prodotto p = new Prodotto(pId, pNome, pAcq, scorta);
+                p.setProPrezzovendite(pVen);
+                p.setProScortaMin(scortaMin);
+                p.setProVenduti(venduti);
+                lista.add(p);
+            }
+        }
+        file.close();
+    } catch (java.io.IOException e) {
+        System.out.println("Errore lettura lista prodotti: " + e.getMessage());
+    }
+    return lista;
+}
+
 }

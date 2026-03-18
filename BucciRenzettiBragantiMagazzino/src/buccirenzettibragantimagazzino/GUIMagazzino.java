@@ -19,6 +19,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
         initComponents();
         // posiziona al centro
         this.setLocationRelativeTo(this);
+        this.aggiornaTabella();
         
     }
 
@@ -148,6 +149,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
         f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         f.setVisible(true);
         f.setLocationRelativeTo(this);
+        this.aggiornaTabella();
     }//GEN-LAST:event_BtnCompraActionPerformed
 
     private void btnVendiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendiActionPerformed
@@ -169,6 +171,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    private GestioneFile file = new GestioneFile();
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCompra;
@@ -185,7 +188,21 @@ public class GUIMagazzino extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void aggiornaTabella(){
-        
+        javax.swing.table.DefaultTableModel model =
+        (javax.swing.table.DefaultTableModel) jTable2.getModel();
+    model.setRowCount(0);
+
+    for (Prodotto p : file.leggiTuttiProdotti()) {
+        model.addRow(new Object[]{
+            p.getProId(),
+            p.getProNome(),
+            p.getProPrezzoAcq(),
+            p.getProPrezzovendite(),
+            p.getProScorta(),
+            p.getProScortaMin(),
+            p.getProVenduti()
+        });
+    }
     }
 
 }
