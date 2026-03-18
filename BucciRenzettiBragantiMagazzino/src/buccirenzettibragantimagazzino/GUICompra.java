@@ -9,7 +9,7 @@ package buccirenzettibragantimagazzino;
  * @author bucci.alex
  */
 public class GUICompra extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUICompra.class.getName());
 
     /**
@@ -146,6 +146,7 @@ public class GUICompra extends javax.swing.JFrame {
 
     private void BtnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCompraActionPerformed
         // TODO add your handling code here:
+        aggiungiProdotto();
     }//GEN-LAST:event_BtnCompraActionPerformed
 
     /**
@@ -192,17 +193,17 @@ public class GUICompra extends javax.swing.JFrame {
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtPrezzoAcquista;
     // End of variables declaration//GEN-END:variables
-    Magazzino m=new Magazzino();
-    GestioneFile gf=new GestioneFile();
-    
-    private void aggiungiProdotto(){
-    String id=txtId.getText();
-    String nome=txtNome.getText();
-    double prezzoAcquista = Double.parseDouble(txtPrezzoAcquista.getText());
-    int nProdotti = Integer.parseInt(txtNumero.getText());
-    Prodotto p=new Prodotto(id,nome,prezzoAcquista,nProdotti);
-    m.aggiungiProdotto(p, p.getProScorta());
-    gf.aggiungiProdottoFile(p);
-}
+    Magazzino m = new Magazzino();
+    GestioneFile gf = new GestioneFile();
+
+    private void aggiungiProdotto() {
+        String id = txtId.getText();
+        String nome = txtNome.getText();
+        double prezzoAcquista = Double.parseDouble(txtPrezzoAcquista.getText());
+        int nProdotti = Integer.parseInt(txtNumero.getText());
+        Prodotto p = new Prodotto(id, nome, prezzoAcquista, nProdotti);
+        m.aggiungiProdotto(p, p.getProScorta());
+        gf.aggiungiProdottoFile(p);
+    }
 
 }
