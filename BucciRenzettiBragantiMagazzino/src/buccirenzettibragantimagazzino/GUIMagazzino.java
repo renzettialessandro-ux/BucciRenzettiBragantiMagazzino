@@ -83,10 +83,20 @@ public class GUIMagazzino extends javax.swing.JFrame {
 
         btnVendi.setText("Vendi");
         btnVendi.setBorder(null);
+        btnVendi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendiActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnVendi);
 
         btnCerca.setText("🔍Cerca");
         btnCerca.setBorder(null);
+        btnCerca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCercaActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnCerca);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
@@ -139,6 +149,18 @@ public class GUIMagazzino extends javax.swing.JFrame {
         f.setVisible(true);
         f.setLocationRelativeTo(this);
     }//GEN-LAST:event_BtnCompraActionPerformed
+
+    private void btnVendiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendiActionPerformed
+        GUIVendi f = new GUIVendi();
+        f.setTitle("Vendi Prodotto");
+        f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        f.setVisible(true);
+        f.setLocationRelativeTo(this);
+    }//GEN-LAST:event_btnVendiActionPerformed
+
+    private void btnCercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCercaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCercaActionPerformed
 
     /**
      * @param args the command line arguments
