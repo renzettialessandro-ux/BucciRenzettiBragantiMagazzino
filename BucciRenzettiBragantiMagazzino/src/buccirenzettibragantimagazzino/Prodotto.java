@@ -9,34 +9,36 @@ package buccirenzettibragantimagazzino;
  * @author renzetti.alessandro
  */
 public class Prodotto {
+
     /**
      * attributi
      */
-   private String proId;
-   private String proNome;
-   private double proPrezzoAcq;
-   private double proPrezzovendite;
-   private int proScorta;
-   private int proScortaMin;
-   private int proVenduti;
-   private int stato;
+    private String proId;
+    private String proNome;
+    private double proPrezzoAcq;
+    private double proPrezzovendite;
+    private int proScorta;
+    private int proScortaMin;
+    private int proVenduti;
+    private int stato;
 
-   /**
-    * costruttore di prodotto
-    * @param proId id del prodotto
-    * @param proNome nome del prodotto
-    * @param proPrezzoAcq prezzo dell'acquirente
-    * @param proPrezzovendite prezzo di vendita
-    * @param proScorta numero prodotti da acquistare
-    */
+    /**
+     * costruttore di prodotto
+     *
+     * @param proId id del prodotto
+     * @param proNome nome del prodotto
+     * @param proPrezzoAcq prezzo dell'acquirente
+     * @param proPrezzovendite prezzo di vendita
+     * @param proScorta numero prodotti da acquistare
+     */
     public Prodotto(String proId, String proNome, double proPrezzoAcq, double proPrezzovendite, int proScorta) {
         this.proId = proId;
         this.proNome = proNome;
         this.proPrezzoAcq = proPrezzoAcq;
         this.proPrezzovendite = proPrezzovendite;
         this.proScorta = proScorta;
-        proScortaMin=5;
-        stato=1;
+        proScortaMin = 5;
+        stato = 1;
     }
 
     public int getStato() {
@@ -103,10 +105,22 @@ public class Prodotto {
         this.proVenduti = proVenduti;
     }
 
+    public void aumentaScorta(int aumento) {
+        this.proScorta += aumento;
+    }
+
+    public void diminuisciScorta(int vendite) {
+
+        if (proScorta - vendite >= proScortaMin) {
+            this.proScorta -= vendite;
+        } else {
+            System.out.println("non puoi andare sotto la scorta minima di: " + proScortaMin + " prodotti");
+        }
+    }
+
     @Override
     public String toString() {
         return "Prodotto{" + "proId=" + proId + ", proNome=" + proNome + ", proPrezzoAcq=" + proPrezzoAcq + ", proPrezzovendite=" + proPrezzovendite + ", proScorta=" + proScorta + ", proScortaMin=" + proScortaMin + ", proVenduti=" + proVenduti + '}';
     }
-   
-   
+
 }
