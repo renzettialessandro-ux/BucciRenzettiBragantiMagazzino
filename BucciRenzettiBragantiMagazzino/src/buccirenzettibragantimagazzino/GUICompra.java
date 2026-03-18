@@ -148,14 +148,13 @@ public class GUICompra extends javax.swing.JFrame {
 
     private void BtnCompraActionPerformed(java.awt.event.ActionEvent evt) {
 
-        // TODO add your handling code here:
-        aggiungiProdotto();
+      
 
         if (aggiungiProdotto()) {
             this.dispose();
         }
 
-
+    }
 
     
 
@@ -179,8 +178,8 @@ public class GUICompra extends javax.swing.JFrame {
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtPrezzoAcquista;
     // End of variables declaration//GEN-END:variables
-    Magazzino m = new Magazzino();
-    GestioneFile gf = new GestioneFile();
+    private Magazzino m = new Magazzino();
+    private GestioneFile gf = new GestioneFile();
 
     private boolean aggiungiProdotto() {
         try {

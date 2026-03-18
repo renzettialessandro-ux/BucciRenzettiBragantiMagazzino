@@ -27,5 +27,15 @@ public class Magazzino {
         if(listaProdotti.contains(p))listaProdotti.remove(p);
         p.diminuisciScorta(vendite);
     }
+
+    public ArrayList<Prodotto> getListaProdotti() {
+        return listaProdotti;
+    }
+
+    public void setListaProdotti(ArrayList<Prodotto> listaProdotti) {
+        this.listaProdotti = listaProdotti;
+    }
+    
+    
     
 }

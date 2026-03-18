@@ -169,6 +169,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    private GestioneFile file;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCompra;
@@ -185,7 +186,21 @@ public class GUIMagazzino extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void aggiornaTabella(){
-        
+        javax.swing.table.DefaultTableModel model =
+        (javax.swing.table.DefaultTableModel) jTable2.getModel();
+    model.setRowCount(0);
+
+    for (Prodotto p : file.()) {
+        model.addRow(new Object[]{
+            p.getProId(),
+            p.getProNome(),
+            p.getProPrezzoAcq(),
+            p.getProPrezzovendite(),
+            p.getProScorta(),
+            p.getProScortaMin(),
+            p.getProVenduti()
+        });
+    }
     }
 
 }
