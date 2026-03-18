@@ -14,7 +14,7 @@ import java.io.RandomAccessFile;
  */
 public class GestioneFile {
 
-    private int dimRecordProdotto = 112;
+    private int dimRecordProdotto = 108;
 
     public GestioneFile() {
     }
@@ -44,26 +44,28 @@ public class GestioneFile {
     }
 
     public void aggiungiProdottoFile(Prodotto p) {
-        try {
-            RandomAccessFile file = new RandomAccessFile("magazzino.fgm", "rw");
-            int nRecord = (int) (file.length() / dimRecordProdotto);
-            file.seek(nRecord * dimRecordProdotto);
-            file.writeChars(aggiustaLunghezzaStringa(p.getProId()));
-            file.writeChars(aggiustaLunghezzaStringa(p.getProNome()));
-            file.writeDouble(p.getProPrezzoAcq());
-            file.writeDouble(p.getProPrezzovendite());
-            file.writeInt(p.getProScorta());
-            file.writeInt(p.getProScortaMin());
-            file.writeInt(p.getProVenduti());
-            aggiungiCombinazione(p.getProId(), nRecord);
-            file.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("File non trovato");
-        } catch (IOException e) {
-            System.out.println("Problema in lettura-scrittura file");
-        }
-
+    try {
+        RandomAccessFile file = new RandomAccessFile("magazzino.fgm", "rw");
+        int nRecord = (int) (file.length() / dimRecordProdotto);
+        System.out.println("nRecord prima di scrivere: " + nRecord); // DEBUG
+        System.out.println("Lunghezza file: " + file.length());      // DEBUG
+        
+        file.seek(nRecord * dimRecordProdotto);
+        file.writeChars(aggiustaLunghezzaStringa(p.getProId()));
+        file.writeChars(aggiustaLunghezzaStringa(p.getProNome()));
+        file.writeDouble(p.getProPrezzoAcq());
+        file.writeDouble(p.getProPrezzovendite());
+        file.writeInt(p.getProScorta());
+        file.writeInt(p.getProScortaMin());
+        file.writeInt(p.getProVenduti());
+        aggiungiCombinazione(p.getProId(), nRecord);
+        file.close();
+    } catch (FileNotFoundException ex) {
+        System.out.println("File non trovato");
+    } catch (IOException e) {
+        System.out.println("Problema in lettura-scrittura file");
     }
+}
 
     public String cercaProdottoFile(String idCercato) {
         try {
