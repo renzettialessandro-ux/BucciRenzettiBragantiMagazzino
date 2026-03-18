@@ -154,12 +154,7 @@ public class GUICompra extends javax.swing.JFrame {
         if (aggiungiProdotto()) {
             this.dispose();
         }
-
-
-
-    
-
-
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCompra;
     private javax.swing.JButton jButton1;
