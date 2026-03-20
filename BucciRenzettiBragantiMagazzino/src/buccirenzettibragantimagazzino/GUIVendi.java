@@ -9,7 +9,7 @@ package buccirenzettibragantimagazzino;
  * @author bucci.alex
  */
 public class GUIVendi extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIVendi.class.getName());
 
     /**
@@ -126,22 +126,35 @@ public class GUIVendi extends javax.swing.JFrame {
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtScorteVendere;
     // End of variables declaration//GEN-END:variables
-GestioneFile gf= new GestioneFile();
-public void vendi() {
-    String idCercato = txtId.getText();
-    int numero = Integer.parseInt(txtScorteVendere.getText());
+    GestioneFile gf = new GestioneFile();
+    Magazzino m=new Magazzino();
+    public void vendi() {
+    String idCercato = txtId.getText().trim();
 
-    // 1) Cerca il prodotto nel file
+    if (idCercato.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Inserire un ID valido!");
+        return;
+    }
+
+    int quantita;
+    try {
+        quantita = Integer.parseInt(txtScorteVendere.getText().trim());
+        if (quantita <= 0) throw new NumberFormatException();
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Inserire un numero valido!");
+        return;
+    }
+
     String risultato = gf.cercaProdottoFile(idCercato);
-
     if (risultato == null) {
         javax.swing.JOptionPane.showMessageDialog(this, "Prodotto non trovato o già eliminato!");
         return;
     }
 
-    // 2) Elimina usando lo stesso idCercato
-    gf.eliminaProdottoFile(idCercato);
-
-    javax.swing.JOptionPane.showMessageDialog(this, "Prodotto venduto!\n" + risultato);
+    boolean ok = gf.aggiornaProdottoFile(idCercato, quantita);
+    if (ok) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Vendita completata!\n" + risultato);
+        this.dispose();
+    }
 }
 }
