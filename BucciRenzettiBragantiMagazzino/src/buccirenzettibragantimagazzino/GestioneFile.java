@@ -117,7 +117,7 @@ public class GestioneFile {
         return null;
     }
 
-   public void eliminaProdottoFile(String idCercato) {
+   public void eliminaProdottoFile(String idCercato){
     try {
         java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader("key.txt"));
         String riga;
@@ -157,26 +157,9 @@ public class GestioneFile {
 
     } catch (IOException e) {
         System.out.println("Errore eliminazione: " + e.getMessage());
-   
+        
 
-        // 2) Vai direttamente alla posizione e azzera il record
-        RandomAccessFile file = new RandomAccessFile("magazzino.fgm", "rw");
-        file.seek(posizione * dimRecordProdotto);
-        file.writeChars("********************"); // proId
-        file.writeChars("********************"); // proNome
-        file.writeDouble(0.0);
-        file.writeDouble(0.0);
-        file.writeInt(0);
-        file.writeInt(0);
-        file.writeInt(0);
-        file.close();
-
-        // 3) Aggiorna lo stato nel file sequenziale
-        aggiornaStatoFile(p.getProId(), 0);
-
-    } catch (IOException e) {
-        System.out.println("Errore eliminazione: " + e.getMessage());
-    }
+    } 
 }
 
     private void aggiornaStatoFile(String idCercato, int nuovoStato) {

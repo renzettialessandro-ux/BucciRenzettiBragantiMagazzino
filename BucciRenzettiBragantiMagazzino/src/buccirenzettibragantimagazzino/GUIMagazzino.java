@@ -20,6 +20,8 @@ public class GUIMagazzino extends javax.swing.JFrame {
         // posiziona al centro
         this.setLocationRelativeTo(this);
         this.aggiornaTabella();
+        tb = new Tabella(file);
+        this.jTable2.setModel(tb);
         
     }
 
@@ -144,16 +146,16 @@ public class GUIMagazzino extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCompraActionPerformed
-        GUICompra f = new GUICompra();
+        GUICompra f = new GUICompra(file, tb);
         f.setTitle("Compra Prodotto");
         f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         f.setVisible(true);
         f.setLocationRelativeTo(this);
-        this.aggiornaTabella();
+        
     }//GEN-LAST:event_BtnCompraActionPerformed
 
     private void btnVendiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendiActionPerformed
-        GUIVendi f = new GUIVendi();
+        GUIVendi f = new GUIVendi(file, tb);
         f.setTitle("Vendi Prodotto");
         f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         f.setVisible(true);
@@ -172,6 +174,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     private GestioneFile file = new GestioneFile();
+    private Tabella tb;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCompra;

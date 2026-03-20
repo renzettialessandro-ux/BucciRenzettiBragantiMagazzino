@@ -67,6 +67,7 @@ public class GUICerca extends javax.swing.JFrame {
 
     private void btnCercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCercaActionPerformed
         cerca();
+        
     }//GEN-LAST:event_btnCercaActionPerformed
 
     /**

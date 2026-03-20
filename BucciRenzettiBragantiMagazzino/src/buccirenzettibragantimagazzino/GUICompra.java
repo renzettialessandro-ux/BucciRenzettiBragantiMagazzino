@@ -17,7 +17,10 @@ public class GUICompra extends javax.swing.JFrame {
     /**
      * Creates new form GUICompra
      */
-    public GUICompra() {
+    public GUICompra(GestioneFile gf, Tabella tb) {
+        this.gf = gf;
+        this.tb = tb;
+        
         initComponents();
     }
 
@@ -151,6 +154,7 @@ public class GUICompra extends javax.swing.JFrame {
       
 
         if (aggiungiProdotto()) {
+            tb.aggiorna();
             this.dispose();
         }
 
@@ -182,6 +186,7 @@ public class GUICompra extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private Magazzino m = new Magazzino();
     private GestioneFile gf = new GestioneFile();
+    private Tabella tb;
 
     private boolean aggiungiProdotto() {
         try {
