@@ -42,6 +42,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
         BtnCompra = new javax.swing.JButton();
         btnVendi = new javax.swing.JButton();
         btnCerca = new javax.swing.JButton();
+        btnElimina = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
 
@@ -64,7 +65,6 @@ public class GUIMagazzino extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Magazzino");
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
@@ -100,6 +100,15 @@ public class GUIMagazzino extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnCerca);
+
+        btnElimina.setText("Elimina");
+        btnElimina.setBorder(null);
+        btnElimina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnElimina);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
@@ -169,6 +178,14 @@ public class GUIMagazzino extends javax.swing.JFrame {
         f.setLocationRelativeTo(this);
     }//GEN-LAST:event_btnCercaActionPerformed
 
+    private void btnEliminaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminaActionPerformed
+        GUIelimina f = new GUIelimina(file, tb);
+        f.setTitle("Elimina Prodotto");
+        f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        f.setVisible(true);
+        f.setLocationRelativeTo(this);
+    }//GEN-LAST:event_btnEliminaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -178,6 +195,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCompra;
     private javax.swing.JButton btnCerca;
+    private javax.swing.JButton btnElimina;
     private javax.swing.JButton btnVendi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
