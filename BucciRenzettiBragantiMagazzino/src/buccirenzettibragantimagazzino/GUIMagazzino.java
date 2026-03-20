@@ -9,7 +9,7 @@ package buccirenzettibragantimagazzino;
  * @author bucci.alex
  */
 public class GUIMagazzino extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIMagazzino.class.getName());
 
     /**
@@ -17,12 +17,11 @@ public class GUIMagazzino extends javax.swing.JFrame {
      */
     public GUIMagazzino() {
         initComponents();
-        // posiziona al centro
-        this.setLocationRelativeTo(this);
-        this.aggiornaTabella();
+        this.setLocationRelativeTo(null); // null = centra sullo schermo
+        file = new GestioneFile();
         tb = new Tabella(file);
         this.jTable2.setModel(tb);
-        
+
     }
 
     /**
@@ -151,7 +150,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
         f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         f.setVisible(true);
         f.setLocationRelativeTo(this);
-        
+
     }//GEN-LAST:event_BtnCompraActionPerformed
 
     private void btnVendiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendiActionPerformed
@@ -175,7 +174,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
      */
     private GestioneFile file = new GestioneFile();
     private Tabella tb;
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCompra;
     private javax.swing.JButton btnCerca;
@@ -190,22 +189,22 @@ public class GUIMagazzino extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 
-    private void aggiornaTabella(){
-        javax.swing.table.DefaultTableModel model =
-        (javax.swing.table.DefaultTableModel) jTable2.getModel();
-    model.setRowCount(0);
+    private void aggiornaTabella() {
+        javax.swing.table.DefaultTableModel model
+                = (javax.swing.table.DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
 
-    for (Prodotto p : file.leggiTuttiProdotti()) {
-        model.addRow(new Object[]{
-            p.getProId(),
-            p.getProNome(),
-            p.getProPrezzoAcq(),
-            p.getProPrezzovendite(),
-            p.getProScorta(),
-            p.getProScortaMin(),
-            p.getProVenduti()
-        });
-    }
+        for (Prodotto p : file.leggiTuttiProdotti()) {
+            model.addRow(new Object[]{
+                p.getProId(),
+                p.getProNome(),
+                p.getProPrezzoAcq(),
+                p.getProPrezzovendite(),
+                p.getProScorta(),
+                p.getProScortaMin(),
+                p.getProVenduti()
+            });
+        }
     }
 
 }

@@ -1,18 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package buccirenzettibragantimagazzino;
 
-/**
- *
- * @author renzetti.alessandro
- */
 public class Prodotto {
 
-    /**
-     * attributi
-     */
     private String proId;
     private String proNome;
     private double proPrezzoAcq;
@@ -22,23 +11,14 @@ public class Prodotto {
     private int proVenduti;
     private int stato;
 
-    /**
-     * costruttore di prodotto
-     *
-     * @param proId id del prodotto
-     * @param proNome nome del prodotto
-     * @param proPrezzoAcq prezzo dell'acquirente
-     * @param proPrezzovendite prezzo di vendita
-     * @param proScorta numero prodotti da acquistare
-     */
     public Prodotto(String proId, String proNome, double proPrezzoAcq, int proScorta) {
         this.proId = proId;
         this.proNome = proNome;
         this.proPrezzoAcq = proPrezzoAcq;
-        this.proPrezzovendite = proPrezzoAcq*1.23;
+        this.proPrezzovendite = proPrezzoAcq * 1.23;
         this.proScorta = proScorta;
-        proScortaMin = 5;
-        stato = 1;
+        this.proScortaMin = 5;
+        this.stato = 1;
     }
 
     public int getStato() {
@@ -109,18 +89,23 @@ public class Prodotto {
         this.proScorta += aumento;
     }
 
-    public void diminuisciScorta(int vendite) {
-
+    /**
+     * Diminuisce la scorta se non si scende sotto la scorta minima.
+     *
+     * @return true se l'operazione è andata a buon fine, false altrimenti
+     */
+    public boolean diminuisciScorta(int vendite) {
         if (proScorta - vendite >= proScortaMin) {
             this.proScorta -= vendite;
-        } else {
-            System.out.println("non puoi andare sotto la scorta minima di: " + proScortaMin + " prodotti");
+            this.proVenduti += vendite;
+            return true;
         }
+        return false;
     }
 
     @Override
     public String toString() {
-        return "Prodotto{" + "proId=" + proId + ", proNome=" + proNome + ", proPrezzoAcq=" + proPrezzoAcq + ", proPrezzovendite=" + proPrezzovendite + ", proScorta=" + proScorta + ", proScortaMin=" + proScortaMin + ", proVenduti=" + proVenduti + '}';
+        return "Prodotto{" + "proId=" + proId + ", proNome=" + proNome + ", proPrezzoAcq=" + proPrezzoAcq + ", proPrezzovendite=" + proPrezzovendite + ", proScorta=" + proScorta + ", proScortaMin=" + proScortaMin + ", proVenduti=" + proVenduti + ", stato=" + stato + '}';
     }
 
 }
