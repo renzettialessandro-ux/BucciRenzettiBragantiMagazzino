@@ -1,15 +1,35 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
 package buccirenzettibragantimagazzino;
+
+/**
+ *
+ * @author renzetti.alessandro
+ */
 
 import java.io.*;
 import java.util.ArrayList;
 
 public class GestioneFile {
 
+    /**
+     * attributi
+     */
     private final int dimRecordProdotto = 108;
 
+    /**
+     * costruttore
+     */
     public GestioneFile() {
     }
 
+    /**
+     * metodo per sistemare la stringa
+     * @param s stringa
+     * @return stringa sistemata
+     */
     public String aggiustaLunghezzaStringa(String s) {
         if (s.length() >= 20) {
             return s.substring(0, 20);

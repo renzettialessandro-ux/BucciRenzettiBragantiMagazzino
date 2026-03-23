@@ -1,11 +1,26 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
 package buccirenzettibragantimagazzino;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @author renzetti.alessandro
+ */
+
 public class Magazzino {
 
+    /**
+     * attributi
+     */
     private ArrayList<Prodotto> listaProdotti;
 
+    /**
+     * costruttore di magazzino
+     */
     public Magazzino() {
         listaProdotti = new ArrayList<>();
     }
@@ -37,10 +52,18 @@ public class Magazzino {
         return ok;
     }
 
+    /**
+     * getter della lista dei prodotti
+     * @return lista di prodotti
+     */
     public ArrayList<Prodotto> getListaProdotti() {
         return listaProdotti;
     }
 
+    /**
+     * setter della lista dei prodotti
+     * @param listaProdotti lista di prodotti da assegnare all'oggetto
+     */
     public void setListaProdotti(ArrayList<Prodotto> listaProdotti) {
         this.listaProdotti = listaProdotti;
     }

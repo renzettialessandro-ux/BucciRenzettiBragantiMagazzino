@@ -1,13 +1,27 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package buccirenzettibragantimagazzino;
+
+/**
+ *
+ * @author braganti.alessandro
+ */
 
 public class GUIVendi extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger =
-        java.util.logging.Logger.getLogger(GUIVendi.class.getName());
-
+    /**
+     * attributi
+     */
     private final GestioneFile gf;
     private final Tabella tb;
 
+    /**
+     * costruttore
+     * @param gf gestore dei file
+     * @param tb tabella
+     */
     public GUIVendi(GestioneFile gf, Tabella tb) {
         this.gf = gf;
         this.tb = tb;
@@ -75,6 +89,9 @@ public class GUIVendi extends javax.swing.JFrame {
         pack();
     }
 
+    /**
+     * metodo per vendere il prodotto
+     */
     private void vendi() {
         String idCercato = txtId.getText().trim();
 
@@ -86,7 +103,9 @@ public class GUIVendi extends javax.swing.JFrame {
         int quantita;
         try {
             quantita = Integer.parseInt(txtScorteVendere.getText().trim());
-            if (quantita <= 0) throw new NumberFormatException();
+            if (quantita <= 0) {
+                throw new NumberFormatException();
+            }
         } catch (NumberFormatException e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Inserire un numero valido e positivo!");
             return;

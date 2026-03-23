@@ -10,7 +10,7 @@ package buccirenzettibragantimagazzino;
  */
 public class GUIMagazzino extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIMagazzino.class.getName());
+    
 
     /**
      * Creates new form GUIProdotto
@@ -153,6 +153,10 @@ public class GUIMagazzino extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * metodo che avviene quando premo il tasto compra
+     * @param evt evento onclick
+     */
     private void BtnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCompraActionPerformed
         GUICompra f = new GUICompra(file, tb);
         f.setTitle("Compra Prodotto");
@@ -162,6 +166,10 @@ public class GUIMagazzino extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BtnCompraActionPerformed
 
+    /**
+     * metodo che avviene quando premo il tasto vendi
+     * @param evt evento onclick
+     */
     private void btnVendiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendiActionPerformed
         GUIVendi f = new GUIVendi(file, tb);
         f.setTitle("Vendi Prodotto");
@@ -170,6 +178,10 @@ public class GUIMagazzino extends javax.swing.JFrame {
         f.setLocationRelativeTo(this);
     }//GEN-LAST:event_btnVendiActionPerformed
 
+    /**
+     * metodo che avviene quando premo il tasto cerca
+     * @param evt evento onclick
+     */
     private void btnCercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCercaActionPerformed
         GUICerca f = new GUICerca();
         f.setTitle("Cerca Prodotto");
@@ -178,6 +190,10 @@ public class GUIMagazzino extends javax.swing.JFrame {
         f.setLocationRelativeTo(this);
     }//GEN-LAST:event_btnCercaActionPerformed
 
+    /**
+     * metodo che avviene quando premo il tasto elimina
+     * @param evt evento onclick
+     */
     private void btnEliminaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminaActionPerformed
         GUIelimina f = new GUIelimina(file, tb);
         f.setTitle("Elimina Prodotto");
@@ -207,22 +223,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 
-    private void aggiornaTabella() {
-        javax.swing.table.DefaultTableModel model
-                = (javax.swing.table.DefaultTableModel) jTable2.getModel();
-        model.setRowCount(0);
-
-        for (Prodotto p : file.leggiTuttiProdotti()) {
-            model.addRow(new Object[]{
-                p.getProId(),
-                p.getProNome(),
-                p.getProPrezzoAcq(),
-                p.getProPrezzovendite(),
-                p.getProScorta(),
-                p.getProScortaMin(),
-                p.getProVenduti()
-            });
-        }
-    }
+    
+    
 
 }

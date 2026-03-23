@@ -1,15 +1,28 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package buccirenzettibragantimagazzino;
 
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author bucci.alex
+ */
 public class GUICompra extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger =
-        java.util.logging.Logger.getLogger(GUICompra.class.getName());
-
+    /**
+     * attributi
+     */
     private final GestioneFile gf;
     private final Tabella tb;
 
+    /**
+     * costruttore  
+     * @param gf gestore del file
+     * @param tb tabella
+     */
     public GUICompra(GestioneFile gf, Tabella tb) {
         this.gf = gf;
         this.tb = tb;
@@ -116,6 +129,10 @@ public class GUICompra extends javax.swing.JFrame {
         pack();
     }
 
+    /**
+     * metodo per aggiungere il prodotto
+     * @return se l'aggiunta è andata a buon fine
+     */
     private boolean aggiungiProdotto() {
         try {
             String id = txtId.getText().trim();

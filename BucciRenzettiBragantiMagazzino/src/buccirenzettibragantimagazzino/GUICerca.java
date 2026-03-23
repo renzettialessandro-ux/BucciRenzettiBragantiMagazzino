@@ -1,12 +1,24 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package buccirenzettibragantimagazzino;
+
+/**
+ *
+ * @author bucci.alex
+ */
 
 public class GUICerca extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger =
-        java.util.logging.Logger.getLogger(GUICerca.class.getName());
-
+    /**
+     * attributi
+     */
     private final GestioneFile gf;
 
+    /**
+     * costruttore
+     */
     public GUICerca() {
         this.gf = new GestioneFile();
         initComponents();
@@ -49,6 +61,9 @@ public class GUICerca extends javax.swing.JFrame {
         pack();
     }
 
+    /**
+     * metodo per cercare il prodotto
+     */
     private void cerca() {
         String idCercato = txtId.getText().trim();
         if (idCercato.isEmpty()) {
