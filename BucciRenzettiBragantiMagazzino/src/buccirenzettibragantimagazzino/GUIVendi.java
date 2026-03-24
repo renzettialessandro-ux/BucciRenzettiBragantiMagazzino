@@ -8,7 +8,6 @@ package buccirenzettibragantimagazzino;
  *
  * @author braganti.alessandro
  */
-
 public class GUIVendi extends javax.swing.JFrame {
 
     /**
@@ -19,6 +18,7 @@ public class GUIVendi extends javax.swing.JFrame {
 
     /**
      * costruttore
+     *
      * @param gf gestore dei file
      * @param tb tabella
      */

@@ -19,7 +19,8 @@ public class GUICompra extends javax.swing.JFrame {
     private final Tabella tb;
 
     /**
-     * costruttore  
+     * costruttore
+     *
      * @param gf gestore del file
      * @param tb tabella
      */
@@ -131,6 +132,7 @@ public class GUICompra extends javax.swing.JFrame {
 
     /**
      * metodo per aggiungere il prodotto
+     *
      * @return se l'aggiunta è andata a buon fine
      */
     private boolean aggiungiProdotto() {

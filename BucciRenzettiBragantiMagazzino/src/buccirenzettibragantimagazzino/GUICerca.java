@@ -8,7 +8,6 @@ package buccirenzettibragantimagazzino;
  *
  * @author bucci.alex
  */
-
 public class GUICerca extends javax.swing.JFrame {
 
     /**

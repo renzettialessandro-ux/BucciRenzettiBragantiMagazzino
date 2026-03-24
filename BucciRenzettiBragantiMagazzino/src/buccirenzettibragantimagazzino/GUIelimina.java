@@ -9,7 +9,7 @@ package buccirenzettibragantimagazzino;
  * @author bucci.alex
  */
 public class GUIelimina extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIelimina.class.getName());
 
     /**
@@ -70,8 +70,6 @@ public class GUIelimina extends javax.swing.JFrame {
         gf.eliminaProdottoFile(txtID.getText());
         tb.aggiorna();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    
 
     private GestioneFile gf;
     private Tabella tb;

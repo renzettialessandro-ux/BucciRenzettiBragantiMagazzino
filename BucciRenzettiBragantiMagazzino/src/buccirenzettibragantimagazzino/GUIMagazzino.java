@@ -10,8 +10,6 @@ package buccirenzettibragantimagazzino;
  */
 public class GUIMagazzino extends javax.swing.JFrame {
 
-    
-
     /**
      * Creates new form GUIProdotto
      */
@@ -155,6 +153,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
 
     /**
      * metodo che avviene quando premo il tasto compra
+     *
      * @param evt evento onclick
      */
     private void BtnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCompraActionPerformed
@@ -168,6 +167,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
 
     /**
      * metodo che avviene quando premo il tasto vendi
+     *
      * @param evt evento onclick
      */
     private void btnVendiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendiActionPerformed
@@ -180,6 +180,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
 
     /**
      * metodo che avviene quando premo il tasto cerca
+     *
      * @param evt evento onclick
      */
     private void btnCercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCercaActionPerformed
@@ -192,6 +193,7 @@ public class GUIMagazzino extends javax.swing.JFrame {
 
     /**
      * metodo che avviene quando premo il tasto elimina
+     *
      * @param evt evento onclick
      */
     private void btnEliminaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminaActionPerformed
@@ -201,9 +203,8 @@ public class GUIMagazzino extends javax.swing.JFrame {
         f.setVisible(true);
         f.setLocationRelativeTo(this);
     }//GEN-LAST:event_btnEliminaActionPerformed
-
     /**
-     * @param args the command line arguments
+     * variabili globali
      */
     private GestioneFile file = new GestioneFile();
     private Tabella tb;
@@ -222,8 +223,5 @@ public class GUIMagazzino extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
-
-    
-    
 
 }

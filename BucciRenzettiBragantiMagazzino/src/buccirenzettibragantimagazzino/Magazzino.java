@@ -10,7 +10,6 @@ import java.util.ArrayList;
  *
  * @author renzetti.alessandro
  */
-
 public class Magazzino {
 
     /**
@@ -54,6 +53,7 @@ public class Magazzino {
 
     /**
      * getter della lista dei prodotti
+     *
      * @return lista di prodotti
      */
     public ArrayList<Prodotto> getListaProdotti() {
@@ -62,6 +62,7 @@ public class Magazzino {
 
     /**
      * setter della lista dei prodotti
+     *
      * @param listaProdotti lista di prodotti da assegnare all'oggetto
      */
     public void setListaProdotti(ArrayList<Prodotto> listaProdotti) {

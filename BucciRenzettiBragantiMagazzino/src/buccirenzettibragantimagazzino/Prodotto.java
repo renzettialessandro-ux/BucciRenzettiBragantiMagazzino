@@ -8,7 +8,6 @@ package buccirenzettibragantimagazzino;
  *
  * @author braganti.alessandro
  */
-
 public class Prodotto {
 
     /**
@@ -25,6 +24,7 @@ public class Prodotto {
 
     /**
      * costruttore
+     *
      * @param proId id del prodotto
      * @param proNome nome del prodotto
      * @param proPrezzoAcq prezzo di acquisto del prodotto
@@ -42,6 +42,7 @@ public class Prodotto {
 
     /**
      * getter stato
+     *
      * @return stato del prodotto
      */
     public int getStato() {
@@ -50,6 +51,7 @@ public class Prodotto {
 
     /**
      * setter dello stato
+     *
      * @param stato stato da impostare
      */
     public void setStato(int stato) {
@@ -58,6 +60,7 @@ public class Prodotto {
 
     /**
      * getter id del prodotto
+     *
      * @return id del prodotto
      */
     public String getProId() {
@@ -66,6 +69,7 @@ public class Prodotto {
 
     /**
      * setter dell'id del prodotto
+     *
      * @param proId id da inserire
      */
     public void setProId(String proId) {
@@ -74,6 +78,7 @@ public class Prodotto {
 
     /**
      * getter nome del prodotto
+     *
      * @return nome del prodotto
      */
     public String getProNome() {
@@ -82,6 +87,7 @@ public class Prodotto {
 
     /**
      * setter nome del prodotto
+     *
      * @param proNome nome da inserire
      */
     public void setProNome(String proNome) {
@@ -90,6 +96,7 @@ public class Prodotto {
 
     /**
      * getter prezzo di acquisto
+     *
      * @return prezzo di acquisto
      */
     public double getProPrezzoAcq() {
@@ -98,6 +105,7 @@ public class Prodotto {
 
     /**
      * setter prezzo di acquisto
+     *
      * @param proPrezzoAcq prezzo di acquisto da assegnare
      */
     public void setProPrezzoAcq(double proPrezzoAcq) {
@@ -106,6 +114,7 @@ public class Prodotto {
 
     /**
      * getter prezzo di vendita
+     *
      * @return prezzo di vendita
      */
     public double getProPrezzovendite() {
@@ -114,6 +123,7 @@ public class Prodotto {
 
     /**
      * setter prezzo di vendita
+     *
      * @param proPrezzovendite prezzo di vendita da assegnare
      */
     public void setProPrezzovendite(double proPrezzovendite) {
@@ -122,6 +132,7 @@ public class Prodotto {
 
     /**
      * getter scorta del prodotto
+     *
      * @return scorta del prodotto
      */
     public int getProScorta() {
@@ -130,6 +141,7 @@ public class Prodotto {
 
     /**
      * setter scorta del prodotto
+     *
      * @param proScorta scorda da assegnare
      */
     public void setProScorta(int proScorta) {
@@ -138,6 +150,7 @@ public class Prodotto {
 
     /**
      * getter scorta minima
+     *
      * @return scorta minima
      */
     public int getProScortaMin() {
@@ -146,6 +159,7 @@ public class Prodotto {
 
     /**
      * setter scorta minima
+     *
      * @param proScortaMin scorta minima da assegnare
      */
     public void setProScortaMin(int proScortaMin) {
@@ -154,6 +168,7 @@ public class Prodotto {
 
     /**
      * getter prodotti venduti
+     *
      * @return numero prodotti venduti
      */
     public int getProVenduti() {
@@ -162,6 +177,7 @@ public class Prodotto {
 
     /**
      * setter prodotti venduti
+     *
      * @param proVenduti numero dei prodotti venduti
      */
     public void setProVenduti(int proVenduti) {
@@ -170,6 +186,7 @@ public class Prodotto {
 
     /**
      * metodo per aumentare la scorta
+     *
      * @param aumento valore di aumento
      */
     public void aumentaScorta(int aumento) {
@@ -192,6 +209,7 @@ public class Prodotto {
 
     /**
      * override toString
+     *
      * @return attributi dell'oggetto
      */
     @Override

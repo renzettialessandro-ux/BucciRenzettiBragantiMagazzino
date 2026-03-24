@@ -8,7 +8,6 @@ package buccirenzettibragantimagazzino;
  *
  * @author renzetti.alessandro
  */
-
 import java.io.*;
 import java.util.ArrayList;
 
@@ -27,6 +26,7 @@ public class GestioneFile {
 
     /**
      * metodo per sistemare la stringa
+     *
      * @param s stringa
      * @return stringa sistemata
      */
@@ -41,6 +41,13 @@ public class GestioneFile {
         return sb.toString();
     }
 
+    /**
+     * metodo per aggiungere la combinazione (proId;posizione in acesso diretto)
+     * in un file sequenziale
+     *
+     * @param proId id prodotto
+     * @param posizione posizione riferente al file ad accesso diretto
+     */
     public void aggiungiCombinazione(String proId, int posizione) {
         try (FileWriter fw = new FileWriter("key.txt", true)) {
             fw.write(proId + ";" + posizione + ";1\n");
@@ -49,6 +56,11 @@ public class GestioneFile {
         }
     }
 
+    /**
+     * metodo per aggiungere profotto nel file ad accesso diretto
+     *
+     * @param p prodotto da aggiungere
+     */
     public void aggiungiProdottoFile(Prodotto p) {
         try (RandomAccessFile file = new RandomAccessFile("magazzino.fgm", "rw")) {
             int nRecord = (int) (file.length() / dimRecordProdotto);
@@ -68,6 +80,12 @@ public class GestioneFile {
         }
     }
 
+    /**
+     * metodo per cercare il prodotto tramite id
+     *
+     * @param idCercato id del prodotto da cercare
+     * @return il "toString" del prodotto cercato
+     */
     public String cercaProdottoFile(String idCercato) {
         int posizione = cercaPosizione(idCercato);
         if (posizione == -1) {
@@ -96,6 +114,11 @@ public class GestioneFile {
         return null;
     }
 
+    /**
+     * metodo per eliminare un prodotto dal file ad accesso diretto
+     *
+     * @param idCercato id da cercare del prodotto da eliminare
+     */
     public void eliminaProdottoFile(String idCercato) {
         int posizione = cercaPosizione(idCercato);
 
@@ -125,6 +148,13 @@ public class GestioneFile {
         aggiornaStatoFile(idCercato, 0);
     }
 
+    /**
+     * metodo per cambare il valore delle scorte nel file
+     *
+     * @param idCercato id del prodotto
+     * @param quantitaVenduta quantità da togliere
+     * @return
+     */
     public boolean aggiornaProdottoFile(String idCercato, int quantitaVenduta) {
         int posizione = cercaPosizione(idCercato);
         if (posizione == -1) {
@@ -185,6 +215,12 @@ public class GestioneFile {
         return -1;
     }
 
+    /**
+     * metodo per cambiare lo stato del prodotto nel file
+     *
+     * @param idCercato id prodotto
+     * @param nuovoStato 1 se integro,0 se eliminato o modificato
+     */
     private void aggiornaStatoFile(String idCercato, int nuovoStato) {
         StringBuilder contenuto = new StringBuilder();
 
@@ -216,6 +252,14 @@ public class GestioneFile {
         }
     }
 
+    /**
+     * metodo per leggere i campi nel file ad accesso diretto
+     *
+     * @param file file da dove leggere
+     * @param n lunghezza file
+     * @return campi letti
+     * @throws IOException
+     */
     private String leggiChars(RandomAccessFile file, int n) throws IOException {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++) {
@@ -224,6 +268,11 @@ public class GestioneFile {
         return sb.toString();
     }
 
+    /**
+     * metodo per leggere tutti i prodotti nel file
+     *
+     * @return la lista di prodotti letti
+     */
     public ArrayList<Prodotto> leggiTuttiProdotti() {
         ArrayList<Prodotto> lista = new ArrayList<>();
         try (RandomAccessFile file = new RandomAccessFile("magazzino.fgm", "r")) {
